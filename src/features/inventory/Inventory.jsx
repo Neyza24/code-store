@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { loadData } from './inventorySlice';
+import { getCurrencySymbol, calculatePrice } from '../../utilities/utilities';
 
 
 
-const Inventory = ({ allProducts, dispatch }) => {
-    const currencyFilter = 'USD';
+const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
 
     const onMount = () => {
         dispatch(loadData());
@@ -13,18 +13,17 @@ const Inventory = ({ allProducts, dispatch }) => {
     useEffect(onMount, [dispatch]);
 
 
-    function createInventoryItem(inventoryItem, simbol) {
+    function createInventoryItem(inventoryItem) {
         const { name, price, img } = inventoryItem;
 
-        const displayPrice = price;
+        const displayPrice = calculatePrice(price, currencyFilter);
 
         return (
             <li key={name} className='item'>
                 <img src={img} alt={name} />
                 <h3>{name}</h3>
                 <h3 className='price'>
-                    {simbol}
-                    {displayPrice.toFixed(2)} {simbol}
+                    {getCurrencySymbol(currencyFilter)}{displayPrice.toFixed(2)} {currencyFilter}
                 </h3>
                 <button
                     className="add-to-cart-button"
