@@ -1,9 +1,16 @@
-import './App.css';
 
-function App() {
+import Inventory from './features/inventory/Inventory';
+
+
+const App = ({state, dispatch}) => {
+
   return (
-    <div className="App">
+    <div>
       <h2>REDUX CODE STORE</h2>
+      <Inventory 
+        allProducts={state.inventory} 
+        dispatch={dispatch}
+      />
     </div>
   );
 }
