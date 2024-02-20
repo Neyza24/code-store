@@ -1,4 +1,5 @@
 
+import Cart from './features/cart/Cart';
 import CurrencyFilter from './features/currencyFilter/CurrencyFilter';
 import Inventory from './features/inventory/Inventory';
 
@@ -16,6 +17,11 @@ const App = ({state, dispatch}) => {
       <CurrencyFilter 
         currencyFilter={state.currencyFilter}
         dispatch={dispatch}
+      />
+      <Cart 
+        cart={state.cart}
+        dispatch={dispatch}
+        currencyFilter={state.currencyFilter}
       />
     </div>
   );

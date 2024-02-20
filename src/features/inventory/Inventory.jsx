@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { loadData } from './inventorySlice';
+import { addItem } from '../cart/cartSlice';
 import { getCurrencySymbol, calculatePrice } from '../../utilities/utilities';
 
 
@@ -11,6 +12,10 @@ const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
     };
 
     useEffect(onMount, [dispatch]);
+
+    const onClickHandler = (invetoryItem) => {
+        dispatch(addItem(invetoryItem))
+    }
 
 
     function createInventoryItem(inventoryItem) {
@@ -27,6 +32,7 @@ const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
                 </h3>
                 <button
                     className="add-to-cart-button"
+                    onClick={() => onClickHandler(inventoryItem)}
                 >
                     ADD TO CART
                 </button>
@@ -41,7 +47,7 @@ const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
     return (
         <ul id='inventory-container'>
             {
-                allProducts.map(product => createInventoryItem(product, currencyFilter))
+                allProducts?.map(product => createInventoryItem(product, currencyFilter))
             }
         </ul>
     );
