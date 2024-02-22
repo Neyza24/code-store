@@ -4,7 +4,6 @@ import { addItem } from '../cart/cartSlice';
 import { getCurrencySymbol, calculatePrice } from '../../utilities/utilities';
 
 
-
 const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
 
     const onMount = () => {
@@ -15,7 +14,7 @@ const Inventory = ({ allProducts, dispatch, currencyFilter }) => {
 
     const onClickHandler = (invetoryItem) => {
         dispatch(addItem(invetoryItem))
-    }
+    };
 
 
     function createInventoryItem(inventoryItem) {

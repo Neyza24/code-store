@@ -6,27 +6,27 @@ import SearchTerm from './features/searchTerm/SearchTerm';
 import { getFilteredProducts } from './utilities/utilities';
 
 
-const App = ({state, dispatch}) => {
+const App = ({ state, dispatch }) => {
 
   const visibleAllProducts = getFilteredProducts(state.inventory, state.searchTerm);
 
   return (
     <div>
-      <h2>REDUX CODE STORE</h2>
-      <SearchTerm 
+      <h2 className='header'>REDUX CODE STORE</h2>
+      <SearchTerm
         searchTerm={state.searchTerm}
         dispatch={dispatch}
       />
-      <Inventory 
-        allProducts={visibleAllProducts} 
+      <Inventory
+        allProducts={visibleAllProducts}
         dispatch={dispatch}
         currencyFilter={state.currencyFilter}
       />
-      <CurrencyFilter 
+      <CurrencyFilter
         currencyFilter={state.currencyFilter}
         dispatch={dispatch}
       />
-      <Cart 
+      <Cart
         cart={state.cart}
         dispatch={dispatch}
         currencyFilter={state.currencyFilter}

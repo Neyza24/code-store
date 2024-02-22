@@ -6,7 +6,7 @@ const searchIcon = './images/search.svg';
 const clearIcon = './images/clear.svg';
 
 
-const SearchTerm = ({searchTerm, dispatch}) => {
+const SearchTerm = ({ searchTerm, dispatch }) => {
     const onSearchTermChangeHandler = (e) => {
         const userInputValue = e.target.value;
         dispatch(setSearchTerm(userInputValue));
@@ -15,11 +15,11 @@ const SearchTerm = ({searchTerm, dispatch}) => {
     const onClearSearchTermHandler = () => {
         dispatch(clearSearchTerm());
     }
- 
+
     return (
         <div id='search-container'>
-            <img id='search-icon' src={searchIcon} alt='search-icon'/>
-            <input 
+            <img id='search-icon' src={searchIcon} alt='search-icon' />
+            <input
                 id='search'
                 type='text'
                 value={searchTerm}

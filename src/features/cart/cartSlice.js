@@ -16,25 +16,13 @@ export const changeItemQuantity = (name, newQuantity) => {
 
 }
 
-/**
-cart = {
-    'hat': {
-            price: 15.99, 
-            quantity: 1
-        },
-    'T-shirt': {
-            price: 15.99, 
-            quantity: 2
-        }
-}
- */
 
 const initialCart = {};
 export const cartReducer = (cart = initialCart, action) => {
-    switch(action.type) {
-        
-        case 'cart/addItem':{
-            const {name, price} = action.payload;
+    switch (action.type) {
+
+        case 'cart/addItem': {
+            const { name, price } = action.payload;
 
             const quantity = cart[name] ? cart[name].quatity + 1 : 1;
 
@@ -47,10 +35,10 @@ export const cartReducer = (cart = initialCart, action) => {
                 ...cart,
                 [name]: newItem
             }
-            
+
         }
-        case 'cart/changeItemQuantity':{
-            const {name, newQuantity} = action.payload;
+        case 'cart/changeItemQuantity': {
+            const { name, newQuantity } = action.payload;
             const itemToUpdate = cart[name];
 
             const updatedItem = {
@@ -64,7 +52,7 @@ export const cartReducer = (cart = initialCart, action) => {
 
             }
         }
-        default:{
+        default: {
             return cart
         }
     }

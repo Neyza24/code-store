@@ -1,13 +1,12 @@
-import React from 'react';
 import { changeItemQuantity } from './cartSlice';
 import { calculateTotal, getCurrencySymbol } from '../../utilities/utilities';
 
 
-const Cart = ({cart, dispatch, currencyFilter}) => {
+const Cart = ({ cart, dispatch, currencyFilter }) => {
 
-    const onInputChangeHandler = (name,input) => {
+    const onInputChangeHandler = (name, input) => {
         //if the user  enter bad value
-        if(input === '') {
+        if (input === '') {
             return;
         }
 
@@ -20,7 +19,7 @@ const Cart = ({cart, dispatch, currencyFilter}) => {
     // Use the cart and currencyFilter slices to render their data in cart component
     const cartElements = [];
 
-    for(let itemName in cart) {
+    for (let itemName in cart) {
         cartElements.push(createCartItem(itemName))
     };
 
@@ -43,7 +42,7 @@ const Cart = ({cart, dispatch, currencyFilter}) => {
     function createCartItem(name) {
         const item = cart[name];
 
-        if(item.quantity === 0) {
+        if (item.quantity === 0) {
             return;
         }
 
